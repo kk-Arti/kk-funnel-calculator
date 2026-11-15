@@ -83,7 +83,7 @@ export async function buildWorkbook(inp: Inputs): Promise<Blob> {
       c.dataValidation = { type: 'decimal', operator: 'between', formulae: [0.0001, 1], allowBlank: false, showErrorMessage: true, errorStyle: 'stop', errorTitle: 'Enter a percentage', error: 'Type 8% (or 0.08), not 8.' }
     }
   })
-  ws.getCell('B14').value = 'Green cells with blue text are inputs. Everything else calculates.'
+  ws.getCell('B14').value = "One ad channel at a time: clicks and spend from that channel's ad account, step rates for that channel's traffic. Green cells with blue text are inputs."
   ws.getCell('B14').font = { name: FONT, size: 9, italic: true, color: { argb: C.grey } }
 
   // Calculated values for cached results (so previews show numbers before Excel recalculates)
@@ -223,7 +223,7 @@ export async function buildWorkbook(inp: Inputs): Promise<Blob> {
   r += 2
   for (const rr of [r, r + 1, r + 2]) for (let c = 1; c <= 7; c++) ws.getCell(rr, c).fill = fill(C.inputFill)
   ws.getRow(r).height = 10; ws.getRow(r + 2).height = 10; ws.getRow(r + 1).height = 22
-  ws.getCell(`B${r + 1}`).value = 'Not sure which step is cheapest to lift in your store?'
+  ws.getCell(`B${r + 1}`).value = 'Several channels, subscriptions or repeat orders? Send me your numbers.'
   ws.getCell(`B${r + 1}`).font = { name: FONT, size: 11, bold: true, color: { argb: C.greenDeep } }
   const cta = ws.getCell(`F${r + 1}`)
   cta.value = { text: 'Send me your numbers', hyperlink: MESSAGE_URL }

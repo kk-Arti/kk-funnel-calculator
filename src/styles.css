@@ -1217,3 +1217,13 @@ select:focus {
   display: flex;
   align-items: flex-end;
 }
+
+.one-channel {
+  margin: 10px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--green-deep);
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}

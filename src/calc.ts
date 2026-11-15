@@ -21,10 +21,10 @@ export const LABELS: Record<Key, string> = {
 
 /** Where to find each number. Shown under the field and in the Excel file. */
 export const HINTS: Record<Key, string> = {
-  clicks: 'Link clicks in your ad account report for the period.',
-  cpc: 'Ad spend ÷ link clicks for the same period.',
-  load: 'Landing page views ÷ link clicks. Most ad accounts report both.',
-  cart: 'Shopify: Analytics, Reports, Conversion rate breakdown. Sessions with cart additions ÷ all sessions.',
+  clicks: "Link clicks for one channel, from that channel's ad account.",
+  cpc: "That channel's ad spend ÷ its clicks, same period.",
+  load: "Sessions from this channel ÷ clicks. Get sessions from Shopify or GA4, filtered by the channel's UTM source.",
+  cart: 'Shopify: Analytics, Reports, Conversion rate breakdown, filtered by UTM source. Sessions with cart additions ÷ all sessions.',
   checkout: 'Same report: sessions that reached checkout ÷ sessions with cart additions.',
   order: 'Same report: sessions that completed checkout ÷ sessions that reached checkout.',
   aov: 'Average order value in your store analytics for the same period.',

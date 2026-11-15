@@ -37,10 +37,10 @@ function load(): Inputs {
 }
 
 const GROUPS: { title: string; hint: string; keys: Key[] }[] = [
-  { title: 'Ads', hint: 'One period, for example last month.', keys: ['clicks', 'cpc'] },
+  { title: 'Ads', hint: 'One channel, one period, for example last month.', keys: ['clicks', 'cpc'] },
   {
     title: 'Step rates',
-    hint: 'Share of people who make it to the next step. Use the same period as your ads and, if you can, filter the report to paid traffic. GA4 has the same steps in Reports, Monetization, Purchase journey.',
+    hint: "Share of people who make it to the next step, for this channel's traffic only. In GA4 the same steps are in Reports, Monetization, Purchase journey, filtered by session source.",
     keys: ['load', 'cart', 'checkout', 'order'],
   },
   { title: 'Order economics', hint: 'Optional. Adds revenue, ROAS and money left after ads.', keys: ['aov', 'margin'] },
@@ -126,6 +126,7 @@ export default function App() {
                 </button>
               </div>
             </div>
+            <p className="one-channel">Count one ad channel at a time: clicks and spend from that channel's ad account, step rates for that channel's traffic only.</p>
             {isExample && <p className="ex-note">Example numbers. Replace them with yours.</p>}
             <div className="groups">
               {GROUPS.map((g) => (
@@ -214,10 +215,10 @@ export default function App() {
               <div className="mix-cta">
                 <div className="mix-body">
                   <div>
-                    <p className="mix-title">Not sure which step is cheapest to lift in your store?</p>
+                    <p className="mix-title">Several channels, subscriptions or repeat orders?</p>
                     <p className="muted">
-                      A point on one step can take a week, on another a quarter. Send me your numbers and I will tell you
-                      where I would start.
+                      That's where the real answer is, and it's different for every store. Send me your numbers and I'll
+                      tell you which step I would lift first.
                     </p>
                   </div>
                   <a className="btn primary" href={LINKEDIN_MESSAGE} target="_blank" rel="noopener noreferrer">
