@@ -2,7 +2,7 @@
 // Formulas mirror calc.ts: people are rounded at every step, so Excel and the page show the same numbers.
 import type { Workbook, Cell, PaperSize } from 'exceljs'
 import { LOGO_PNG_BASE64 } from './assets/logo64'
-import { EXAMPLE, STAGES, compute, levers, parseNum, validate, type Inputs } from './calc'
+import { EXAMPLE, HINTS, STAGES, compute, levers, parseNum, validate, type Inputs } from './calc'
 
 const MESSAGE_URL =
   'https://www.linkedin.com/messaging/compose/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAADxgieABwE7747g9IZ4BfTrBChanNiZJwr4'
@@ -41,10 +41,10 @@ export async function buildWorkbook(inp: Inputs): Promise<Blob> {
   ws.getCell('C2').font = { name: FONT, size: 18, bold: true, color: { argb: C.white } }
   ws.getCell('C3').value = 'K&K Media, built by Artem Kalachev'
   ws.getCell('C3').font = { name: FONT, size: 10, color: { argb: 'FFCDCDCD' } }
-  const msg = ws.getCell('F6')
+  const msg = ws.getCell('E5')
   msg.value = { text: 'Message me on LinkedIn', hyperlink: MESSAGE_URL }
   msg.font = { name: FONT, size: 11, bold: true, color: { argb: C.greenText }, underline: true }
-  const web = ws.getCell('F7')
+  const web = ws.getCell('G5')
   web.value = { text: 'Open the online calculator', hyperlink: TOOL_URL }
   web.font = { name: FONT, size: 10, color: { argb: C.grey }, underline: true }
 
@@ -76,6 +76,9 @@ export async function buildWorkbook(inp: Inputs): Promise<Blob> {
     c.font = { name: FONT, size: 11, bold: true, color: { argb: C.blue } }
     c.fill = fill(C.inputFill)
     c.border = box
+    const h = ws.getCell(`D${r}`)
+    h.value = HINTS[k]
+    h.font = { name: FONT, size: 9, italic: true, color: { argb: C.grey } }
     if (fmt === '0.0%') {
       c.dataValidation = { type: 'decimal', operator: 'between', formulae: [0.0001, 1], allowBlank: false, showErrorMessage: true, errorStyle: 'stop', errorTitle: 'Enter a percentage', error: 'Type 8% (or 0.08), not 8.' }
     }

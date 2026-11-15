@@ -19,6 +19,18 @@ export const LABELS: Record<Key, string> = {
   margin: 'Margin after COGS, shipping and fees',
 }
 
+/** Where to find each number. Shown under the field and in the Excel file. */
+export const HINTS: Record<Key, string> = {
+  clicks: 'Link clicks in your ad account report for the period.',
+  cpc: 'Ad spend ÷ link clicks for the same period.',
+  load: 'Landing page views ÷ link clicks. Most ad accounts report both.',
+  cart: 'Shopify: Analytics, Reports, Conversion rate breakdown. Sessions with cart additions ÷ all sessions.',
+  checkout: 'Same report: sessions that reached checkout ÷ sessions with cart additions.',
+  order: 'Same report: sessions that completed checkout ÷ sessions that reached checkout.',
+  aov: 'Average order value in your store analytics for the same period.',
+  margin: '(Price minus COGS, shipping and payment fees) ÷ price.',
+}
+
 export const EXAMPLE: Inputs = {
   clicks: '10000',
   cpc: '1.50',

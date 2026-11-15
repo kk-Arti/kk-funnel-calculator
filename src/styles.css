@@ -1197,3 +1197,23 @@ select:focus {
     order: 3;
   }
 }
+
+.field-hint {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--grey-2);
+}
+.field-hint a {
+  color: var(--green-bright);
+}
+.fields {
+  align-items: start;
+}
+.field {
+  justify-content: flex-start;
+}
+.field label {
+  min-height: 2.6em;
+  display: flex;
+  align-items: flex-end;
+}

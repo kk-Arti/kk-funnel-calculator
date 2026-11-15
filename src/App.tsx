@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   EXAMPLE,
+  HINTS,
   LABELS,
   MONEY_KEYS,
   PERCENT_KEYS,
@@ -22,6 +23,7 @@ const LINKEDIN_MESSAGE =
   'https://www.linkedin.com/messaging/compose/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAADxgieABwE7747g9IZ4BfTrBChanNiZJwr4'
 const LOGO = `${import.meta.env.BASE_URL}kk-logo-96.png`
 const STORE = 'kk-funnel-calculator:v1'
+const ROAS_TOOL = 'https://kk-arti.github.io/kk-roas-calculator/'
 
 function load(): Inputs {
   try {
@@ -36,7 +38,11 @@ function load(): Inputs {
 
 const GROUPS: { title: string; hint: string; keys: Key[] }[] = [
   { title: 'Ads', hint: 'One period, for example last month.', keys: ['clicks', 'cpc'] },
-  { title: 'Step rates', hint: 'Share of people who make it to the next step.', keys: ['load', 'cart', 'checkout', 'order'] },
+  {
+    title: 'Step rates',
+    hint: 'Share of people who make it to the next step. Use the same period as your ads and, if you can, filter the report to paid traffic. GA4 has the same steps in Reports, Monetization, Purchase journey.',
+    keys: ['load', 'cart', 'checkout', 'order'],
+  },
   { title: 'Order economics', hint: 'Optional. Adds revenue, ROAS and money left after ads.', keys: ['aov', 'margin'] },
 ]
 
@@ -274,14 +280,26 @@ function Field({ k, value, error, onChange }: { k: Key; value: string; error?: s
           placeholder="0"
           onChange={(e) => onChange(k, e.target.value)}
           aria-invalid={!!error}
-          aria-describedby={error ? `${id}-err` : undefined}
+          aria-describedby={error ? `${id}-err` : `${id}-hint`}
           className={isPct ? 'has-post' : isMoney ? 'has-pre' : ''}
         />
         {isPct && <span className="adorn post">%</span>}
       </div>
-      {error && (
+      {error ? (
         <span id={`${id}-err`} className="field-error" role="alert">
           {error}
+        </span>
+      ) : (
+        <span id={`${id}-hint`} className="field-hint">
+          {HINTS[k]}
+          {k === 'margin' && (
+            <>
+              {' '}
+              <a href={ROAS_TOOL} target="_blank" rel="noopener noreferrer">
+                Work it out per product
+              </a>
+            </>
+          )}
         </span>
       )}
     </div>
