@@ -128,6 +128,13 @@ export default function App() {
             </div>
             <p className="one-channel">Count one ad channel at a time: clicks and spend from that channel's ad account, step rates for that channel's traffic only.</p>
             {isExample && <p className="ex-note">Example numbers. Replace them with yours.</p>}
+            <p className="help-note">
+              Stuck on a number or not sure where to find it?{' '}
+              <a href={LINKEDIN_MESSAGE} target="_blank" rel="noopener noreferrer">
+                Message me
+              </a>{' '}
+              and I'll help.
+            </p>
             <div className="groups">
               {GROUPS.map((g) => (
                 <fieldset key={g.title} className="group">

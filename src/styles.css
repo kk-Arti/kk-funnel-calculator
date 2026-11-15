@@ -1227,3 +1227,15 @@ select:focus {
   font-size: 0.9375rem;
   font-weight: 600;
 }
+
+.help-note {
+  margin: 8px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.help-note a {
+  color: var(--green-bright);
+  display: inline-block;
+  padding: 8px 0;
+}

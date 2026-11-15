@@ -85,6 +85,9 @@ export async function buildWorkbook(inp: Inputs): Promise<Blob> {
   })
   ws.getCell('B14').value = "One ad channel at a time: clicks and spend from that channel's ad account, step rates for that channel's traffic. Green cells with blue text are inputs."
   ws.getCell('B14').font = { name: FONT, size: 9, italic: true, color: { argb: C.grey } }
+  const help = ws.getCell('B15')
+  help.value = { text: 'Stuck on a number or not sure where to find it? Message me and I will help.', hyperlink: MESSAGE_URL }
+  help.font = { name: FONT, size: 10, bold: true, color: { argb: C.greenText }, underline: true }
 
   // Calculated values for cached results (so previews show numbers before Excel recalculates)
   const parsed = validate(Object.fromEntries(rows.map(([, k]) => [k, String(['load', 'cart', 'checkout', 'order', 'margin'].includes(k) ? (val(k) as number) * 100 : val(k))])) as Inputs).parsed!
